@@ -1,5 +1,6 @@
 package com.wase6.Onlinetrackingofgoodsdeliverysystem.handler;
 
+import com.wase6.Onlinetrackingofgoodsdeliverysystem.exception.InavlidUserException;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.LoginEntity;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.UserEntity;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.repositery.UserRepository;
@@ -14,9 +15,12 @@ public class LoginHandlerImlp implements LoginHandler{
     @Autowired
     UserRepository userRepository;
     @Override
-    public UserEntity doLogIn(LoginEntity loginEntity) {
+    public UserEntity doLogIn(LoginEntity loginEntity) throws InavlidUserException {
         UserEntity userEntity =  userRepository.getOne(loginEntity.getEmail());
-        if(userEntity !=null && AuthenticateUser.isValidUser(loginEntity, userEntity)){
+        if(userEntity !=null ){
+            if(!AuthenticateUser.isValidUser(loginEntity, userEntity)){
+                throw new InavlidUserException("Invalid User");
+            }
             userEntity.setPassword("");
             return userEntity;
         }

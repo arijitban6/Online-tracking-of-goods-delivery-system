@@ -1,6 +1,7 @@
 package com.wase6.Onlinetrackingofgoodsdeliverysystem.controller;
 
 
+import com.wase6.Onlinetrackingofgoodsdeliverysystem.exception.InavlidUserException;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.LoginHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.OrderHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.UserHandler;
@@ -42,7 +43,7 @@ public class Controller {
     @RequestMapping(value = "api/login",
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> logIn(@RequestBody LoginEntity input) {
+    public ResponseEntity<UserEntity> logIn(@RequestBody LoginEntity input) throws InavlidUserException {
         UserEntity userEntity = LoginHandlerImpl.doLogIn(input);
         if(userEntity !=null){
             return new ResponseEntity<UserEntity>(userEntity,HttpStatus.OK);
@@ -56,10 +57,10 @@ public class Controller {
     public ResponseEntity<OrderEntity> placeOrder(@RequestBody OrderEntity input) {
         return new ResponseEntity<OrderEntity>(orderHandlerl.placeOrder(input),HttpStatus.UNAUTHORIZED);
     }
-    @RequestMapping(value = "api/placeOrder",
+    @RequestMapping(value = "api/placeOrder/{uid}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OrderEntity> getOrder(@RequestBody OrderEntity input) {
-        return new ResponseEntity<OrderEntity>(orderHandlerl.placeOrder(input),HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<OrderEntity> getOrder(@PathVariable String uid) {
+        return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.UNAUTHORIZED);
     }
 }

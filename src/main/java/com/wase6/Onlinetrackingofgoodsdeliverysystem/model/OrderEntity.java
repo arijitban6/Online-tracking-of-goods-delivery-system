@@ -17,9 +17,13 @@ public class OrderEntity {
 
     @Id
     private String orderId;
+
+
     @OneToOne
     private ItemEntity item;
 
+    @OneToOne
+    private UserEntity user;
 
     private Date orderDate;
     @Enumerated(EnumType.ORDINAL)

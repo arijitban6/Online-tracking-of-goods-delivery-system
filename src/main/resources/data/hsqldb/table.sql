@@ -19,6 +19,7 @@
     CREATE TABLE ORDERENTITY (
   order_id varchar(10) not NULL,
   item_id varchar(10) not NULL,
+  user_email varchar(10) not NULL,
   order_date TIMESTAMP,
   order_status INTEGER,
    PRIMARY KEY (order_id)
