@@ -12,12 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Map;
 
 /**
  * Created by arijit on 1/13/2018.
  */
-@RestController
+@org.springframework.stereotype.Controller
 public class Controller {
     @Autowired
     UserHandler UserHandlerImpl;
@@ -26,11 +32,13 @@ public class Controller {
     @Autowired
     OrderHandler orderHandlerl;
 
-    @RequestMapping(value = "api/user/{uid}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> getUser(@PathVariable String uid) {
-        return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
+    @RequestMapping("api/user/{uid}")
+    public String getUser(Model model, @PathVariable String uid) {
+        UserEntity user = UserHandlerImpl.getUser(uid);
+        model.addAttribute("user","sdkjgsd");
+        System.out.println(user);
+        //return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
+        return "hello";
     }
     @RequestMapping(value = "api/user",
             method = RequestMethod.POST,
@@ -55,12 +63,19 @@ public class Controller {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> placeOrder(@RequestBody OrderEntity input) {
-        return new ResponseEntity<OrderEntity>(orderHandlerl.placeOrder(input),HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<OrderEntity>(orderHandlerl.placeOrder(input),HttpStatus.OK);
     }
     @RequestMapping(value = "api/placeOrder/{uid}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> getOrder(@PathVariable String uid) {
-        return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.OK);
+    }
+
+    @RequestMapping("/")
+    public String home(Map<String, Object> model) {
+        model.put("message", "HowToDoInJava Reader !!");
+        System.out.println("kjsdnf");
+        return "index";
     }
 }
