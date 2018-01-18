@@ -13,11 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -72,10 +71,21 @@ public class Controller {
         return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.OK);
     }
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String home(Map<String, Object> model) {
-        model.put("message", "HowToDoInJava Reader !!");
+        model.put("user", "HowToDoInJava Reader !!");
         System.out.println("kjsdnf");
-        return "index";
-    }
+        return "hello";
+    }*/
+   /* @RequestMapping(value="/welcome",method = RequestMethod.GET)
+    public ModelAndView welcome(Map<String, Object> model) {
+        model.put("time", new Date());
+        model.put("message", System.getProperty("user.name"));
+        ModelAndView model1 = new ModelAndView("hello");
+        model1.addObject("msg", "hello world");
+        //model1.setViewName("welcome");
+
+        return model1;
+        //return "welcome";
+    }*/
 }

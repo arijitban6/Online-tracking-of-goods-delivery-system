@@ -27,11 +27,13 @@ public class test {
         orderEntity.setOrderId("");
         orderEntity.setOrderStatus(OrderStatus.OrderPlaced);
         ItemEntity itemEntity=new ItemEntity();
+
         itemEntity.setDescription("");
         itemEntity.setId("");
         itemEntity.setName("");
         itemEntity.setPrice(new Long(12));
         orderEntity.setItem(itemEntity);
+        orderEntity.setUser(userEntity);
         String json = gson.toJson(orderEntity);
         System.out.println("xyz"+json);
 
