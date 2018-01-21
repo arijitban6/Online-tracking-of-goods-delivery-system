@@ -9,7 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 
 @SpringBootApplication
-public class 	Application extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
 
 	@Override

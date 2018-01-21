@@ -5,24 +5,21 @@ import com.wase6.Onlinetrackingofgoodsdeliverysystem.exception.InavlidUserExcept
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.LoginHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.OrderHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.UserHandler;
+import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.UserOrderRelHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.LoginEntity;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.OrderEntity;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.UserEntity;
+import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.UserOrderRelEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Date;
-import java.util.Map;
 
 /**
  * Created by arijit on 1/13/2018.
  */
-@org.springframework.stereotype.Controller
+@RestController
 public class Controller {
     @Autowired
     UserHandler UserHandlerImpl;
@@ -30,20 +27,24 @@ public class Controller {
     LoginHandler LoginHandlerImpl;
     @Autowired
     OrderHandler orderHandlerl;
+    @Autowired
+    UserOrderRelHandler UserOrderRelImpl;
 
-    @RequestMapping("api/user/{uid}")
-    public String getUser(Model model, @PathVariable String uid) {
+    @RequestMapping(value = "api/user/{uid}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserEntity> getUser( @PathVariable String uid) {
         UserEntity user = UserHandlerImpl.getUser(uid);
-        model.addAttribute("user","sdkjgsd");
+        //model.addAttribute("user","sdkjgsd");
         System.out.println(user);
-        //return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
-        return "hello";
+        return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
+        //return "hello";
     }
     @RequestMapping(value = "api/user",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserEntity> signUp(@RequestBody UserEntity input) {
-
+        System.out.println("user creating" + input);
         return new ResponseEntity<UserEntity>(UserHandlerImpl.createUser(input),HttpStatus.OK);
     }
 
@@ -69,23 +70,11 @@ public class Controller {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> getOrder(@PathVariable String uid) {
         return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.OK);
+    } @RequestMapping(value = "api/getAllOrder/{uid}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserOrderRelEntity> getAllOrder(@PathVariable String uid) {
+        return new ResponseEntity<UserOrderRelEntity>(UserOrderRelImpl.getAllOrder(uid),HttpStatus.OK);
     }
 
-    /*@RequestMapping("/")
-    public String home(Map<String, Object> model) {
-        model.put("user", "HowToDoInJava Reader !!");
-        System.out.println("kjsdnf");
-        return "hello";
-    }*/
-   /* @RequestMapping(value="/welcome",method = RequestMethod.GET)
-    public ModelAndView welcome(Map<String, Object> model) {
-        model.put("time", new Date());
-        model.put("message", System.getProperty("user.name"));
-        ModelAndView model1 = new ModelAndView("hello");
-        model1.addObject("msg", "hello world");
-        //model1.setViewName("welcome");
-
-        return model1;
-        //return "welcome";
-    }*/
 }
