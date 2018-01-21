@@ -28,28 +28,27 @@
     </div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">List of Users </span></div>
+        <div class="panel-heading"><span class="lead">List of Orders </span></div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NAME</th>
-                        <th>AGE</th>
+                        <th>STATUS</th>
+                        <th>DATE</th>
                         <th>SALARY</th>
                         <th width="100"></th>
                         <th width="100"></th>
                     </tr>
                     </thead>
                     <tbody>
-                       <tr ng-repeat="orderEntities in ctrl.getAllOrder()">
+                       <tr ng-repeat="order in ctrl.getAllOrder().orderEntities">
                             <td>{{order.orderId}}</td>
-                            <td>{{order.orderDate}}</td>
                             <td>{{order.orderStatus}}</td>
+                            <td>{{order.orderDate}}</td>
                         <#-- <td>{{u.salary}}</td>-->
-                            <td><button type="button" ng-click="ctrl.editUser(u.id)" class="btn btn-success custom-width">Edit</button></td>
-                            <td><button type="button" ng-click="ctrl.removeUser(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+                            <td><button type="button" ng-click="ctrl.editUser(u.id)" class="btn btn-success custom-width">Check Status</button></td>
                        </tr>
                     </tbody>
                 </table>

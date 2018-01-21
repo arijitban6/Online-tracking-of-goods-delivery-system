@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('crudApp').factory('UserService',
-    ['$localStorage', '$http', '$q', 'urls',
-        function ($localStorage, $http, $q, urls) {
-
+    ['$localStorage', '$http', '$q', 'urls','$window',
+        function ($localStorage, $http, $q, urls,$window) {
+            //$localStorage.orders = [];
             var factory = {
                 loadAllOrders: loadAllOrders,
                 getAllOrders: getAllOrders,
@@ -24,9 +24,11 @@ angular.module('crudApp').factory('UserService',
                     .then(
                         function (response) {
                             console.log('Fetched successfully all users');
-                            $localStorage.orders = {};
+                            //$localStorage.orders = {};
                             $localStorage.orders = response.data;
-                            //deferred.resolve(response);
+                            deferred.resolve(response);
+                            console.log(response.data);
+                            console.log($localStorage.orders)
                             //return response.data;
 
                         },
@@ -39,6 +41,7 @@ angular.module('crudApp').factory('UserService',
             }
 
             function getAllOrders(){
+                console.log("get all orders:XXX"+JSON.stringify($localStorage.orders));
                 return $localStorage.orders;
             }
 
@@ -96,6 +99,7 @@ angular.module('crudApp').factory('UserService',
             }
 
             function placeOrder(Order) {
+                $window.localStorage.clear();
                 console.log('Creating the order '+Order);
                 var deferred = $q.defer();
                 $http.post('http://localhost:9999/api/placeOrder',Order)

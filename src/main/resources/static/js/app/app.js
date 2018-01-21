@@ -15,12 +15,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller:'UserController',
                 controllerAs:'ctrl',
             })
-            .state('home2', {
-                url: '/users',
-                templateUrl: 'partials/users',
-                controller:'UserController',
-                controllerAs:'ctrl',
-            })
             .state('createOrder', {
             url: '/createOrder',
             templateUrl: 'partials/createOrder',

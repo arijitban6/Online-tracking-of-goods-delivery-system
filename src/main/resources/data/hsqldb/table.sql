@@ -10,14 +10,14 @@
   );
   CREATE TABLE ITEMENTITY (
   id varchar(10) not NULL,
-  name varchar(10),
+  name varchar(30),
   price BIGINT ,
-  description varchar(10),
+  description varchar(30),
    PRIMARY KEY (id)
      );
 
     CREATE TABLE ORDERENTITY (
-  order_id varchar(10) not NULL,
+  order_id VARCHAR (100) not NULL,
   item_id varchar(10) not NULL,
   user_email varchar(10) not NULL,
   order_date TIMESTAMP,

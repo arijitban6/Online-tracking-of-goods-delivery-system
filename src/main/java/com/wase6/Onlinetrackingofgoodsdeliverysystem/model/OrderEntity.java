@@ -2,6 +2,7 @@ package com.wase6.Onlinetrackingofgoodsdeliverysystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,7 +16,9 @@ import java.util.Date;
 @Table(name = "ORDERENTITY ")
 public class OrderEntity {
 
-    @Id
+
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String orderId;
 
 

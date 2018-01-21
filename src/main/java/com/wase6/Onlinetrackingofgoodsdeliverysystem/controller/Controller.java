@@ -37,6 +37,7 @@ public class Controller {
         UserEntity user = UserHandlerImpl.getUser(uid);
         //model.addAttribute("user","sdkjgsd");
         System.out.println(user);
+        System.out.println("Get user");
         return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
         //return "hello";
     }
@@ -45,6 +46,7 @@ public class Controller {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserEntity> signUp(@RequestBody UserEntity input) {
         System.out.println("user creating" + input);
+        System.out.println("create user");
         return new ResponseEntity<UserEntity>(UserHandlerImpl.createUser(input),HttpStatus.OK);
     }
 
@@ -53,6 +55,7 @@ public class Controller {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserEntity> logIn(@RequestBody LoginEntity input) throws InavlidUserException {
         UserEntity userEntity = LoginHandlerImpl.doLogIn(input);
+        System.out.println("login user");
         if(userEntity !=null){
             return new ResponseEntity<UserEntity>(userEntity,HttpStatus.OK);
         }
@@ -63,18 +66,26 @@ public class Controller {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> placeOrder(@RequestBody OrderEntity input) {
+        System.out.println("create order");
         return new ResponseEntity<OrderEntity>(orderHandlerl.placeOrder(input),HttpStatus.OK);
     }
+
     @RequestMapping(value = "api/placeOrder/{uid}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> getOrder(@PathVariable String uid) {
+        System.out.println("Get order");
         return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.OK);
-    } @RequestMapping(value = "api/getAllOrder/{uid}",
+    }
+
+    @RequestMapping(value = "api/getAllOrder/{uid}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserOrderRelEntity> getAllOrder(@PathVariable String uid) {
-        return new ResponseEntity<UserOrderRelEntity>(UserOrderRelImpl.getAllOrder(uid),HttpStatus.OK);
+        UserOrderRelEntity userOrderRelEntity= UserOrderRelImpl.getAllOrder(uid);
+        System.out.println(userOrderRelEntity);
+        System.out.println("Get all order");
+        return new ResponseEntity<UserOrderRelEntity>(userOrderRelEntity,HttpStatus.OK);
     }
 
 }

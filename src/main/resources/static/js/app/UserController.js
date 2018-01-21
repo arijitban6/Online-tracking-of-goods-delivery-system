@@ -5,7 +5,7 @@ angular.module('crudApp').controller('UserController',
 
         var self = this;
         self.user = {};
-        self.orders={};
+        self.orders=[];
         self.item = {};
         self.users=[];
         $scope.items = {
@@ -38,7 +38,8 @@ angular.module('crudApp').controller('UserController',
         }
         function submitOrder() {
             console.log('Submitting Order');
-            console.log('Saving New User', self.item);
+            console.log('Saving New Order', self.item);
+
             createOrder(self.item);
         }
 
@@ -49,9 +50,6 @@ angular.module('crudApp').controller('UserController',
                     function (response) {
                         console.log('User created successfully');
                         self.successMessage = 'User created successfully';
-                        self.errorMessage='';
-                        self.done = true;
-                        self.user={};
                         $scope.myForm.$setPristine();
                         sessionStorage.setItem("emp-key", JSON.stringify(user['email']));
                         $window.location.href = "#/createOrder";
@@ -86,14 +84,13 @@ angular.module('crudApp').controller('UserController',
 
 
         function createOrder(item){
-            console.log('About to create order ');
+            console.log('About to create order '+ JSON.stringify(item));
             var userId= sessionStorage.getItem("emp-key");
             userId =  userId.substring(1, userId.length - 1);
             UserService.getUser(userId)
                 .then(
                     function (response) {
                        var order={
-                            orderId: '1',
                             item: item,
                             user : response,
                             orderDate: '2018-01-13',
@@ -103,7 +100,7 @@ angular.module('crudApp').controller('UserController',
                             .then(
                                 function(){
                                     console.log('Order created successfully');
-                                    UserService.loadAllOrders(userId);
+                                    self.orders = UserService.loadAllOrders(userId);
                                 },
                                 function(errResponse){
                                     console.error('Error while creating order, Error :'+errResponse.data);
@@ -115,10 +112,8 @@ angular.module('crudApp').controller('UserController',
 
 
         function getAllOrder(){
-            var userId= sessionStorage.getItem("emp-key");
-            userId =  userId.substring(1, userId.length - 1);
-            console.log('Get All User');
-            var  response = UserService.getAllOrders(userId);
+            console.log('Get All Orders');
+            var  response = UserService.getAllOrders();
             console.log('All Orders: '+JSON.stringify(response));
             return response;
         }
