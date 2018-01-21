@@ -9,11 +9,11 @@ angular.module('crudApp').controller('UserController',
         self.item = {};
         self.users=[];
         $scope.items = {
-            item01 : {id: "I123", price: 12, name: "SDDF", description: "ABC"},
-            item02 : {id: "I101", price: 12, name: "XYZ", description: "SDF"},
-            item03 : {id: "I102", price: 12, name: "AAAA", description: "EFG"},
-            item04 : {id: "I103", price: 12, name: "SDDF", description: "IJK"},
-            item05 : {id: "I104", price: 12, name: "DDDD", description: "LMN"},
+            item01 : {id: "I123", price: 12, name: "Item Name1", description: "Item Description1"},
+            item02 : {id: "I101", price: 12, name: "Item Name2", description: "Item Description2"},
+            item03 : {id: "I102", price: 12, name: "Item Name3", description: "Item Description3"},
+            item04 : {id: "I103", price: 12, name: "Item Name4", description: "Item Description4"},
+            item05 : {id: "I104", price: 12, name: "Item Name5", description: "Item Description5"},
         }
         self.submit = submit;
         self.submitOrder = submitOrder;
@@ -119,7 +119,7 @@ angular.module('crudApp').controller('UserController',
             userId =  userId.substring(1, userId.length - 1);
             console.log('Get All User');
             var  response = UserService.getAllOrders(userId);
-            console.log('data is'+JSON.stringify(response));
+            console.log('All Orders: '+JSON.stringify(response));
             return response;
         }
 

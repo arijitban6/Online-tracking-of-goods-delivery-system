@@ -16,15 +16,18 @@ angular.module('crudApp').factory('UserService',
             return factory;
 
             function loadAllOrders(uId) {
-                console.log('Fetching all users');
+                console.log('Fetching all Orders');
                 var deferred = $q.defer();
-                $http.get('http://localhost:9999/api/getAllOrder/'+uId)
+                var url = 'http://localhost:9999/api/getAllOrder/'+uId;
+                console.log('uri to hit '+ url)
+                $http.get(url)
                     .then(
                         function (response) {
                             console.log('Fetched successfully all users');
+                            $localStorage.orders = {};
                             $localStorage.orders = response.data;
-                            deferred.resolve(response);
-                            return response.data;
+                            //deferred.resolve(response);
+                            //return response.data;
 
                         },
                         function (errResponse) {

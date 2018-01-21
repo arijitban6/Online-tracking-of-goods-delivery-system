@@ -43,7 +43,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                       <tr ng-repeat="orderEntities in ctrl.getAllOrder1()">
+                       <tr ng-repeat="orderEntities in ctrl.getAllOrder()">
                             <td>{{order.orderId}}</td>
                             <td>{{order.orderDate}}</td>
                             <td>{{order.orderStatus}}</td>

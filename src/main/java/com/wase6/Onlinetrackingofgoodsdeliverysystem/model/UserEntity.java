@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by ariji on 1/13/2018.
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "USER ")
-public class UserEntity {
+public class UserEntity implements Serializable {
 
     @Id
     private String email;
