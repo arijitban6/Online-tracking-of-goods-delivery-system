@@ -25,6 +25,9 @@ public class OrderEntity {
     @OneToOne
     private ItemEntity item;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    private DeliveryAddressEntity DeliveryAddress;
+
     @OneToOne
     private UserEntity user;
 

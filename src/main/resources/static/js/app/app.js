@@ -11,7 +11,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'partials/list',
+                templateUrl: 'partials/logIn',
                 controller:'UserController',
                 controllerAs:'ctrl',
             })
@@ -20,16 +20,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: 'partials/createOrder',
             controller:'UserController',
             controllerAs:'ctrl',
-                /*resolve: {
-                    users: function ($q, UserService) {
-                        console.log('Load all users');
-                        var deferred = $q.defer();
-                        UserService.getAllOrder()
-                            .then(deferred.resolve, deferred.resolve);
-                        return deferred.promise;
-                    }
-                }*/
-        });
+            })
+            .state('singUp',{
+                url: '/singUpUser',
+                templateUrl: 'partials/singUp',
+                controller:'UserController',
+                controllerAs:'ctrl',
+            })
+            .state('trackOrder', {
+            url: '/trackOrder',
+            templateUrl: 'partials/trackOrder',
+            controller:'UserController',
+            controllerAs:'ctrl',
+        })
+        ;
         $urlRouterProvider.otherwise('/');
     }]);
 

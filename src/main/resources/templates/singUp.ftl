@@ -15,7 +15,8 @@
 	                            <input type="text" ng-model="ctrl.user.firstName" id="firstName" class="First Name form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
 	                        </div>
 	                    </div>
-	                </div><div class="row">
+	                </div>
+					<div class="row">
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">Name</label>
 	                        <div class="col-md-7">

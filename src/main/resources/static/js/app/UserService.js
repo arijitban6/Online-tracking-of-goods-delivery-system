@@ -3,14 +3,16 @@
 angular.module('crudApp').factory('UserService',
     ['$localStorage', '$http', '$q', 'urls','$window',
         function ($localStorage, $http, $q, urls,$window) {
-            //$localStorage.orders = [];
             var factory = {
                 loadAllOrders: loadAllOrders,
                 getAllOrders: getAllOrders,
                 getUser: getUser,
+                getOrder: getOrder,
                 createUser: createUser,
-                updateUser: updateUser,
-                placeOrder: placeOrder
+                login: login,
+                placeOrder: placeOrder,
+                upDateOrderStatus: upDateOrderStatus,
+                loadOrder: loadOrder
             };
 
             return factory;
@@ -81,17 +83,16 @@ angular.module('crudApp').factory('UserService',
                 return deferred.promise;
             }
 
-            function updateUser(user, id) {
-                console.log('Updating User with id '+id);
+            function login(user) {
+                console.log('Login User  ');
                 var deferred = $q.defer();
-                $http.put(urls.USER_SERVICE_API + id, user)
+                $http.put('http://localhost:9999/api/login', user)
                     .then(
                         function (response) {
-                            loadAllUsers();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while updating User with id :'+id);
+                            console.error('Error while updating User with id :'+errResponse.data);
                             deferred.reject(errResponse);
                         }
                     );
@@ -116,5 +117,45 @@ angular.module('crudApp').factory('UserService',
                 return deferred.promise;
             }
 
+            function upDateOrderStatus(orderId) {
+                console.log('Updating Order ');
+                var deferred = $q.defer();
+                $http.patch('http://localhost:9999/api/upDateOrderStatus/'+orderId)
+                    .then(
+                        function (response) {
+                            console.log('Order status updated ');
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while updating Order with id :'+errResponse.data);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
+            function getOrder(id) {
+                console.log('Fetching Order with id :'+id);
+                var deferred = $q.defer();
+                $http.get('http://localhost:9999/api/placeOrder/' + id)
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully User with id :'+id);
+                            $localStorage.order = response.data;
+                            deferred.resolve(response.data)
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading user with id :'+id);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
+            function loadOrder(){
+                console.log("get all orders:XXX"+JSON.stringify($localStorage.orders));
+                return $localStorage.order;
+            }
         }
     ]);

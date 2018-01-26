@@ -8,4 +8,5 @@ import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.OrderEntity;
 public interface OrderHandler {
     public OrderEntity placeOrder(OrderEntity orderEntity);
     public OrderEntity getOrder(String oderId);
+    public OrderEntity upDateOrderStatus(String orderId);
 }

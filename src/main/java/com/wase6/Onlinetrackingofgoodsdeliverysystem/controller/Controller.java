@@ -6,10 +6,8 @@ import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.LoginHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.OrderHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.UserHandler;
 import com.wase6.Onlinetrackingofgoodsdeliverysystem.handler.UserOrderRelHandler;
-import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.LoginEntity;
-import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.OrderEntity;
-import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.UserEntity;
-import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.UserOrderRelEntity;
+import com.wase6.Onlinetrackingofgoodsdeliverysystem.model.*;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,11 +33,9 @@ public class Controller {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserEntity> getUser( @PathVariable String uid) {
         UserEntity user = UserHandlerImpl.getUser(uid);
-        //model.addAttribute("user","sdkjgsd");
         System.out.println(user);
         System.out.println("Get user");
         return new ResponseEntity<UserEntity>(UserHandlerImpl.getUser(uid),HttpStatus.OK);
-        //return "hello";
     }
     @RequestMapping(value = "api/user",
             method = RequestMethod.POST,
@@ -75,6 +71,7 @@ public class Controller {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderEntity> getOrder(@PathVariable String uid) {
         System.out.println("Get order");
+        OrderEntity orderEntity = new OrderEntity();
         return new ResponseEntity<OrderEntity>(orderHandlerl.getOrder(uid),HttpStatus.OK);
     }
 
@@ -87,5 +84,14 @@ public class Controller {
         System.out.println("Get all order");
         return new ResponseEntity<UserOrderRelEntity>(userOrderRelEntity,HttpStatus.OK);
     }
+
+    @RequestMapping(value = "api/upDateOrderStatus/{orderId}",
+            method = RequestMethod.PATCH,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OrderEntity> upDateOrderStatus(@PathVariable ("orderId") String orderId) {
+        System.out.println("update OrderStatus");
+        return new ResponseEntity<OrderEntity>(orderHandlerl.upDateOrderStatus(orderId),HttpStatus.OK);
+    }
+
 
 }

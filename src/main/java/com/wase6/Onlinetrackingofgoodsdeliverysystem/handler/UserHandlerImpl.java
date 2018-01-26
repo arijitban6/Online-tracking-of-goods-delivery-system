@@ -14,7 +14,9 @@ public class UserHandlerImpl implements UserHandler {
     UserRepository userRepository;
     @Override
     public UserEntity getUser(String Id) {
-        return userRepository.getOne(Id);
+        UserEntity userEntity = userRepository.getOne(Id);
+        userEntity.setPassword(null);
+        return userEntity;
     }
 
     @Override

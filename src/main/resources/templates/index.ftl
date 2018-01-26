@@ -18,8 +18,7 @@
 
         <div class="home-section">
             <ul class="menu-list">
-                <li><a href="#/users">Users</a></li>
-                <li><a href="#/roles">Roles</a></li>
+                <li><a href="#/singUpUser">Sing Up</a></li>
             </ul>
         </div>
 
