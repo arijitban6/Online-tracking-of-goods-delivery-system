@@ -15,6 +15,32 @@
                     <h3>{{response.deliveryAddress.address}}</h3>
                     <h3>{{response.deliveryAddress.location}}</h3>
                 </div>
+                <div class="progress" id="your-div">
+                    <div class="circle">
+                        <span class="label">1</span>
+                        <span class="title">0%</span>
+                    </div>
+                    <span class="bar"></span>
+                    <div class="circle">
+                        <span class="label">2</span>
+                        <span class="title">25%</span>
+                    </div>
+                    <span class="bar"></span>
+                    <div class="circle">
+                        <span class="label">3</span>
+                        <span class="title">50%</span>
+                    </div>
+                    <span class="bar"></span>
+                    <div class="circle">
+                        <span class="label">4</span>
+                        <span class="title">75%</span>
+                    </div>
+                    <span class="bar"></span>
+                    <div class="circle">
+                        <span class="label">5</span>
+                        <span class="title">100%</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

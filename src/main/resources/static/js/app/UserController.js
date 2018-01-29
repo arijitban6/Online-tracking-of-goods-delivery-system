@@ -2,7 +2,7 @@
 
 angular.module('crudApp').controller('UserController',
     ['UserService', '$scope','$location','$window', '$localStorage', function( UserService, $scope, $location,$window,$localStorage) {
-
+        $window.localStorage.clear();
         var self = this;
         self.user = {};
         self.login = {};
