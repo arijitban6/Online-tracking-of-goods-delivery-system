@@ -2,7 +2,7 @@
 
 angular.module('crudApp').controller('UserController',
     ['UserService', '$scope','$location','$window', '$localStorage', function( UserService, $scope, $location,$window,$localStorage) {
-        $window.localStorage.clear();
+        //$window.localStorage.clear();
         var self = this;
         self.user = {};
         self.login = {};
@@ -32,9 +32,9 @@ angular.module('crudApp').controller('UserController',
         self.editUser = editUser;
         self.reset = reset;
         self.doUpDateOrderStatus = doUpDateOrderStatus;
-        self.upDateOrder = upDateOrder;
         self.checkOrderStatus = checkOrderStatus
         self.loadOrder = loadOrder
+        self.changeOrderStatus = changeOrderStatus
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -56,6 +56,7 @@ angular.module('crudApp').controller('UserController',
             console.log('Saving login', self.login);
             logIn(self.login);
         }
+
         function doUpDateOrderStatus(){
             console.log('Saving orderId', self.order);
             upDateOrder(self.order);
@@ -99,6 +100,7 @@ angular.module('crudApp').controller('UserController',
                         self.done = true;
                         $scope.myForm.$setPristine();*/
                         sessionStorage.setItem("emp-key", JSON.stringify(login['email']));
+                        self.orders = UserService.loadAllOrders(login['email']);
                         $window.location.href = "#/createOrder";
 
                     },
@@ -141,7 +143,7 @@ angular.module('crudApp').controller('UserController',
 
 
 
-        function upDateOrder(orderId){
+  /*      function upDateOrder(orderId){
             console.log('About to update order '+ JSON.stringify(orderId));
             UserService.upDateOrderStatus(orderId)
                 .then(
@@ -152,7 +154,7 @@ angular.module('crudApp').controller('UserController',
                         console.error('Error while updating order, Error :'+errResponse.data);
                     }
                 );
-        }
+        }*/
 
 
         function getAllOrder(){
@@ -174,6 +176,7 @@ angular.module('crudApp').controller('UserController',
                     console.log(self.order);
                     console.log(response);*/
                     $localStorage.order = response;
+                    sessionStorage.setItem("order-key", JSON.stringify(orderId));
                     //deferred.resolve(response);
                     //return self.order;
                 },
@@ -196,6 +199,23 @@ angular.module('crudApp').controller('UserController',
             UserService.getUser(id).then(
                 function (user) {
                     self.user = user;
+                },
+                function (errResponse) {
+                    console.error('Error while removing user ' + id + ', Error :' + errResponse.data);
+                }
+            );
+        }
+
+        function changeOrderStatus() {
+            self.successMessage='';
+            self.errorMessage='';
+            var orderId = sessionStorage.getItem("order-key");
+            console.info(orderId)
+            orderId =  orderId.substring(1, orderId.length - 1);
+            UserService.upDateOrderStatus(orderId).then(
+                function (user) {
+                    //self.user = user;
+                    console.info('updated');
                 },
                 function (errResponse) {
                     console.error('Error while removing user ' + id + ', Error :' + errResponse.data);

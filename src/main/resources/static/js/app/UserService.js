@@ -12,9 +12,9 @@ angular.module('crudApp').factory('UserService',
                 login: login,
                 placeOrder: placeOrder,
                 upDateOrderStatus: upDateOrderStatus,
-                loadOrder: loadOrder
+                loadOrder: loadOrder,
             };
-
+             var count = 0;
             return factory;
 
             function loadAllOrders(uId) {
@@ -118,20 +118,27 @@ angular.module('crudApp').factory('UserService',
             }
 
             function upDateOrderStatus(orderId) {
-                console.log('Updating Order ');
                 var deferred = $q.defer();
-                $http.patch('http://localhost:9999/api/upDateOrderStatus/'+orderId)
-                    .then(
-                        function (response) {
-                            console.log('Order status updated ');
-                            deferred.resolve(response.data);
-                        },
-                        function (errResponse) {
-                            console.error('Error while updating Order with id :'+errResponse.data);
-                            deferred.reject(errResponse);
-                        }
-                    );
-                return deferred.promise;
+                if(count<4){
+                    console.log('Updating Order ');
+                    var deferred = $q.defer();
+                    $http.patch('http://localhost:9999/api/upDateOrderStatus/'+orderId)
+                        .then(
+                            function (response) {
+                                console.log('Order status updated ');
+                                deferred.resolve(response.data);
+                                count++;
+                            },
+                            function (errResponse) {
+                                console.error('Error while updating Order with id :'+errResponse.data);
+                                deferred.reject(errResponse);
+                            }
+                        );
+                    return deferred.promise;
+                }
+                else{
+                    return deferred.promise;
+                }
             }
 
             function getOrder(id) {
@@ -152,6 +159,7 @@ angular.module('crudApp').factory('UserService',
                     );
                 return deferred.promise;
             }
+
 
             function loadOrder(){
                 console.log("get all orders:XXX"+JSON.stringify($localStorage.orders));

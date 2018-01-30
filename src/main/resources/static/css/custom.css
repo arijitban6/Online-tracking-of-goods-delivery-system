@@ -1,0 +1,22 @@
+/*	This is a custom CSS file*/
+#regpanel{
+	padding-top: 15px;
+}
+footer,a{
+	padding : 2em 0;
+	text-align: center;
+}
+#regform .row{
+	padding: 10px;
+}
+.img-circle{
+	border-radius: 500px;
+	height: 140px;
+	width: 140px;
+}
+.input-group{
+	margin-top: 10px;
+}
+.form-group{
+	margin-top: 5px;
+}

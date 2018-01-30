@@ -6,7 +6,7 @@ jQuery(document).ready( function() {
 
 function checkContainer () {
     if($('#your-div').is(':visible')){ //if the container is visible on the page
-        var i = 1;
+        var i = 3;
         $('.progress .circle').removeClass().addClass('circle');
         $('.progress .bar').removeClass().addClass('bar');
         setInterval(function() {
@@ -21,7 +21,10 @@ function checkContainer () {
             $('.progress .bar:nth-of-type(' + (i - 2) + ')').removeClass('active').addClass('done');
 
             i++;
-
+            var outside = angular.element($('#your-div')).scope();
+            console.log(outside)
+             outside = angular.element($('#your-div')).scope().ctrl.changeOrderStatus();
+            console.log(outside)
             if (i == 0) {
                 $('.progress .bar').removeClass().addClass('bar');
                 $('.progress div.circle').removeClass().addClass('circle');
