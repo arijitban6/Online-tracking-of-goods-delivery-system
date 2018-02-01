@@ -17,15 +17,15 @@ body, .form-control{
 }
 
 .generic-container {
-    margin: 20px;
+    margin: 30px;
     padding: 20px;
   background-color: #EAE7E7;
-  border: 1px solid #ddd;
+  border: 1px solid #2d52ff;
   border-radius: 4px;
-  box-shadow: 0 0 30px black;
+  box-shadow: 0 0 30px #2d52ff;
 }
 
 .custom-width {
-    width: 80px !important;
+    width: 120px !important;
 }
 

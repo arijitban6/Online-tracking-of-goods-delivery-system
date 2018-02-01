@@ -14,6 +14,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'partials/logIn',
                 controller:'UserController',
                 controllerAs:'ctrl',
+                resolve: {
+                     function (UserService) {
+                        console.log('Load all users');
+                        UserService.clearAll();
+                    }
+                }
             })
             .state('createOrder', {
             url: '/createOrder',

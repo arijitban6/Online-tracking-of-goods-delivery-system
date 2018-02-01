@@ -8,12 +8,13 @@
                 <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
                 <form ng-submit="ctrl.submitOrder()" name="myForm" class="form-horizontal">
                     <input type="hidden" ng-model="ctrl.user.id" />
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="uname">Name</label>
-                        <div class="col-md-7">
-                            <select class="Last Name form-control input-sm" ng-model="ctrl.item" ng-options="y.name+ ' '+ y.price + ' '+ y.description for y in items">
-                            </select>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="uname">Name</label>
+                            <div class="col-md-7">
+                                <select class="Last Name form-control input-sm" ng-model="ctrl.item" ng-options="'Product: '+y.name+ ' Price: '+ y.price  for y in items">
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

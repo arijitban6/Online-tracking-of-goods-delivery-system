@@ -35,6 +35,7 @@ angular.module('crudApp').controller('UserController',
         self.checkOrderStatus = checkOrderStatus
         self.loadOrder = loadOrder
         self.changeOrderStatus = changeOrderStatus
+        self.clearAll = clearAll
 
         self.successMessage = '';
         self.errorMessage = '';
@@ -222,10 +223,21 @@ angular.module('crudApp').controller('UserController',
                 }
             );
         }
+
         function reset(){
             self.successMessage='';
             self.errorMessage='';
             self.user={};
+            $scope.myForm.$setPristine(); //reset Form
+        }
+
+        function clearAll(){
+            UserService.clearAll();
+            self.successMessage='';
+            self.errorMessage='';
+            self.user={};
+            $window.localStorage.clear();
+            sessionStorage.empty();
             $scope.myForm.$setPristine(); //reset Form
         }
     }

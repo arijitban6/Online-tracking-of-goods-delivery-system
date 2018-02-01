@@ -13,6 +13,7 @@ angular.module('crudApp').factory('UserService',
                 placeOrder: placeOrder,
                 upDateOrderStatus: upDateOrderStatus,
                 loadOrder: loadOrder,
+                clearAll:clearAll
             };
              var count = 0;
             return factory;
@@ -164,6 +165,10 @@ angular.module('crudApp').factory('UserService',
             function loadOrder(){
                 console.log("get all orders:XXX"+JSON.stringify($localStorage.orders));
                 return $localStorage.order;
+            }
+
+            function clearAll(){
+                $window.localStorage.clear();
             }
         }
     ]);

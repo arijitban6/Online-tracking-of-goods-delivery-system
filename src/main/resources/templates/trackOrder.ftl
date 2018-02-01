@@ -11,7 +11,9 @@
                     <h3>{{response.orderId}}</h3>
                     <h3>{{response.item.price}}</h3>
                     <h3>{{response.item.name}}</h3>
-                    <h3>{{response.orderStatus}}</h3>
+                    <div class="readonly_label" id="field-function_purpose">
+                        {{response.orderStatus}}
+                    </div>
                     <h3>{{response.deliveryAddress.address}}</h3>
                     <h3>{{response.deliveryAddress.location}}</h3>
                     <div class="progress" id="your-div">
