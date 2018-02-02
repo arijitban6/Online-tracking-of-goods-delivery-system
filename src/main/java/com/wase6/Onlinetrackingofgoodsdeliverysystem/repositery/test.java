@@ -23,7 +23,7 @@ public class test {
         loginEntity.setEmail("");
         OrderEntity orderEntity = new OrderEntity();
         System.out.println(orderEntity);
-        orderEntity.setOrderDate(new Date());
+        //orderEntity.setOrderDate(new Date());
         orderEntity.setOrderId("");
         orderEntity.setOrderStatus(OrderStatus.OrderPlaced);
         ItemEntity itemEntity = new ItemEntity();
