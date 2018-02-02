@@ -38,7 +38,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="salary">Salary</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrl.user.email" id="email" class="form-control input-sm" placeholder="Enter your email Id." required ng-pattern="ctrl.onlyNumbers"/>
+	                            <input type="text" ng-model="ctrl.user.email" id="email" class="form-control input-sm" placeholder="Enter your email Id." />
 	                        </div>
 	                    </div>
 	                </div><div class="row">

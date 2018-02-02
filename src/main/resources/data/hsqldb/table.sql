@@ -11,7 +11,7 @@
    PRIMARY KEY (delevery_address_entity_id)
  };*/
   CREATE TABLE USER (
-  email varchar(10) not NULL,
+  email varchar(50) not NULL,
   first_Name varchar(10),
   last_Name varchar(10),
   phone_Number varchar(10),
@@ -42,9 +42,9 @@
     CREATE TABLE ORDERENTITY (
   order_id VARCHAR (100) not NULL,
   item_id varchar(10) not NULL,
-  user_email varchar(10) not NULL,
+  user_email varchar(50) not NULL,
   delivery_address_delivery_address_entity_id  VARCHAR (100) not NULL,
-  order_date TIMESTAMP,
+  order_date VARCHAR(10),
   order_status INTEGER,
    PRIMARY KEY (order_id)
      );

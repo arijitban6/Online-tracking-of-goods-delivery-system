@@ -31,7 +31,7 @@ public class OrderEntity {
     @OneToOne
     private UserEntity user;
 
-    private Date orderDate;
+    private String orderDate;
     @Enumerated(EnumType.ORDINAL)
     private OrderStatus orderStatus;
 
