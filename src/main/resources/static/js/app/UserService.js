@@ -15,7 +15,8 @@ angular.module('crudApp').factory('UserService',
                 loadOrder: loadOrder,
                 clearAll:clearAll
             };
-             var count = 0;
+
+            var count = 0;
             return factory;
 
             function loadAllOrders(uId) {
@@ -69,7 +70,7 @@ angular.module('crudApp').factory('UserService',
             function createUser(user) {
                 console.log('Creating User');
                 var deferred = $q.defer();
-                $http.post('http://localhost:9999/api/user', user)
+                $http.post('https://online-tracking-system.herokuapp.com/api/user', user)
                     .then(
                         function (response) {
                             deferred.resolve(response.data);
@@ -169,6 +170,7 @@ angular.module('crudApp').factory('UserService',
 
             function clearAll(){
                 $window.localStorage.clear();
+                $localStorage.$reset();
             }
         }
     ]);
