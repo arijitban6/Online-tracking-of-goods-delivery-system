@@ -27,7 +27,7 @@ public class UserHandlerImpl implements UserHandler {
 
     @Override
     public UserEntity createUser(UserEntity userEntity) {
-            String password = createPassword(userEntity.getFirstName(),userEntity.getLastName(),userEntity.getPassword());
+            String password = createPassword(userEntity.getFirstName(),userEntity.getLastName(),userEntity.getLastName());
         try {
            mail.sendEmail(userEntity.getEmail(),"Welcome","Hi "+userEntity.getFirstName()+"!! your password is: "+password);
             userEntity.setPassword(password);
@@ -39,6 +39,6 @@ public class UserHandlerImpl implements UserHandler {
     }
     private String createPassword(String fName,String lname, String phonoNumber){
 
-        return fName.substring(0,fName.length()-2)+phonoNumber.substring(phonoNumber.length()-3,phonoNumber.length())+fName.substring(0,fName.length()-2);
+        return fName.substring(0,fName.length()-2)+lname.substring(0,fName.length()-2)+phonoNumber.substring(phonoNumber.length()-3,phonoNumber.length());
     }
 }
