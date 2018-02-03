@@ -104,7 +104,7 @@
                         <th>ID</th>
                         <th>STATUS</th>
                         <th>DATE</th>
-                        <th>SALARY</th>
+                        <th>    </th>
                         <th width="100"></th>
                         <th width="100"></th>
                     </tr>
