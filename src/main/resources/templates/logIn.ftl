@@ -27,7 +27,7 @@
                         <div class="form-actions" align="center">
                             <input type="submit"  value="{{!ctrl.user.id ? 'Sign-in' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                         <#-- <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>-->
-                            <a href="#/singUpUser"></li><img src="http://www.pngmart.com/files/3/Sign-Up-Button-Transparent-Background.png" height=30 width =80></a>
+                            <a href="#/singUpUser" class="btn btn-warning btn-sm " > Signup / Register</a>
                         <#--<button type="button" ng-click="ctrl.editUser('asd')" class="btn btn-success custom-width">Edit</button>-->
                         </div>
                     </div>
