@@ -18,7 +18,7 @@
                     <#--<h4>Recipient Contact No.&ensp;: {{response.deliveryAddress.phoneNumber}}</h4>-->
                     <h4>Recipient Full Address : {{response.deliveryAddress.address}}, {{response.deliveryAddress.location}}, {{response.deliveryAddress.city}}, {{response.deliveryAddress.state}}</h4>
                     <h4>LandMark&emsp; &emsp; &emsp;&emsp; &emsp;:{{response.deliveryAddress.landmark}}</h4>
-                    <h4>Pincode&emsp; &emsp; &emsp;&emsp; &emsp;&emsp;:{{response.deliveryAddress.pinCode}}</h4>
+                    <#--<h4>Pincode&emsp; &emsp; &emsp;&emsp; &emsp;&emsp;:{{response.deliveryAddress.pinCode}}</h4>-->
 
                     <div class="progress" id="your-div">
                         <div class="circle">

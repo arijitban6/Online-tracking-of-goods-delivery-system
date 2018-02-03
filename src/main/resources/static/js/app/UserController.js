@@ -14,11 +14,11 @@ angular.module('crudApp').controller('UserController',
         self.deliveryAddress={};
 
         $scope.items = {
-            item01 : {id: "I123", price: 12, name: "Item Name1", description: "Item Description1"},
-            item02 : {id: "I101", price: 12, name: "Item Name2", description: "Item Description2"},
-            item03 : {id: "I102", price: 12, name: "Item Name3", description: "Item Description3"},
-            item04 : {id: "I103", price: 12, name: "Item Name4", description: "Item Description4"},
-            item05 : {id: "I104", price: 12, name: "Item Name5", description: "Item Description5"},
+            item01 : {id: "I123", price: 405, name: "Harry Potter and the Deathly Hallows", description: "Item Description1"},
+            item02 : {id: "I101", price: 524, name: "Harry Potter and the Goblet of Fire", description: "Item Description2"},
+            item03 : {id: "I102", price: 349, name: "Harry Potter and the Chamber of Secrets", description: "Item Description3"},
+            item04 : {id: "I103", price: 450, name: "Twilight: The Graphic Novel", description: "Item Description4"},
+            item05 : {id: "I104", price: 489, name: "Harry Potter and the Half-Blood Prince", description: "Item Description5"},
         }
 
         self.submit = submit;

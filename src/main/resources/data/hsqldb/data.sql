@@ -1,7 +1,5 @@
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I123','Item Name1',123,'Item Description1');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I101','Item Name2',123,'Item Description2');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I102','Item Name3',123,'Item Description3');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I103','Item Name4',123,'Item Description4');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I104','Item Name5',123,'Item Description5');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I105','Item Name6',123,'Item Description6');
-INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I106','Item Name7',123,'Item Description7');
+INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I123','Harry Potter and the Deathly Hallows',405,'Item Description1');
+INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I101','Harry Potter and the Goblet of Fire',524,'Item Description2');
+INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I102','Harry Potter and the Chamber of Secrets',349,'Item Description3');
+INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I103','Twilight: The Graphic Novel',450,'Item Description4');
+INSERT INTO ITEMENTITY (id,name,price,description) VALUES ('I104','Harry Potter and the Half-Blood Prince',489,'Item Description5');
