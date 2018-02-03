@@ -1,7 +1,7 @@
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">User </span></div>
+        <div class="panel-heading"><span class="lead">Order Details </span></div>
         <div class="panel-body">
             <div class="formcontainer">
                 <div id = "mydiv" class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
@@ -14,7 +14,7 @@
                     <div class="readonly_label">
                         <h4  id="field-function_purpose">Order Status &emsp; &emsp; &emsp;&emsp;: {{response.orderStatus}}</h4>
                     </div>
-                    <h4>Recipient Name &emsp; &emsp; &ensp;: {{response.deliveryAddress.name}}</h4>
+                    <h4>Recipient Name &emsp; &emsp; &ensp;: {{response.user.firstName}}</h4>
                     <#--<h4>Recipient Contact No.&ensp;: {{response.deliveryAddress.phoneNumber}}</h4>-->
                     <h4>Recipient Full Address : {{response.deliveryAddress.address}}, {{response.deliveryAddress.location}}, {{response.deliveryAddress.city}}, {{response.deliveryAddress.state}}</h4>
                     <h4>LandMark&emsp; &emsp; &emsp;&emsp; &emsp;:{{response.deliveryAddress.landmark}}</h4>
