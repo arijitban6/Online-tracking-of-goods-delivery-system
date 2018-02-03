@@ -1,7 +1,7 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-    BASE: 'http://localhost:9999/',
+    BASE: 'https://online-tracking-system.herokuapp.com/',
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
