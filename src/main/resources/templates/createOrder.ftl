@@ -114,7 +114,6 @@
                             <td>{{order.orderId}}</td>
                             <td>{{order.orderStatus}}</td>
                             <td>{{order.orderDate}}</td>
-                        <#-- <td>{{u.salary}}</td>-->
                             <td><button type="button" ng-click="ctrl.checkOrderStatus(order.orderId)" class="btn btn-success custom-width">Check Status</button></td>
                        </tr>
                     </tbody>

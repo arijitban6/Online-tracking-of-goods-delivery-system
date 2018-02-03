@@ -41,15 +41,6 @@
 	                            <input type="email" ng-model="ctrl.user.email" id="email" class="form-control input-sm" placeholder="Enter your email-id. | e.g. abc@xyz" required/>
 	                        </div>
 	                    </div>
-	                </div><div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="salary">Password <em>*</em></label>
-	                        <div class="col-md-7">
-	                            <input type="password" ng-model="ctrl.user.password" id="password" class="form-control input-sm" placeholder="Set your login password : (a-zA-Z | 0-9 | .,-_ etc | length >=5)" required ng-minlength="5"/>
-	                        </div>
-	                    </div>
-	                </div>
-
 	                <div class="row">
 	                    <div class="form-actions" align="center">
 	                        <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">

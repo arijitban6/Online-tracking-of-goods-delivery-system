@@ -29,16 +29,6 @@
         <script src="js/app/app.js"></script>
         <script src="js/app/UserService.js"></script>
         <script src="js/app/UserController.js"></script>
-        <!--<div class="home-section">
-            <ul class="menu-list">
-                <li><a href="#/singUpUser">Sing Up</a></li>
-            </ul>
-        </div>
-        <div class="home-section">
-            <ul class="menu-list">
-                <li><a href="#/">Log Out</a></li>
-            </ul>
-        </div>-->
     <footer>
         <small>Copyright 2018 |<a href="#"> About Us</a>|<a href="#"> Contact </a>|<a href="#"> Feedback</a></small>
     </footer>
