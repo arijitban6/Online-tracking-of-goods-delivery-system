@@ -3,6 +3,7 @@
 angular.module('crudApp').factory('UserService',
     ['$localStorage', '$http', '$q', 'urls','$window',
         function ($localStorage, $http, $q, urls,$window) {
+            $window.localStorage.clear();
             var factory = {
                 loadAllOrders: loadAllOrders,
                 getAllOrders: getAllOrders,
@@ -15,14 +16,13 @@ angular.module('crudApp').factory('UserService',
                 loadOrder: loadOrder,
                 clearAll:clearAll
             };
-
-            var count = 0;
+             var count = 0;
             return factory;
 
             function loadAllOrders(uId) {
                 console.log('Fetching all Orders');
                 var deferred = $q.defer();
-                var url = 'http://localhost:9999/api/getAllOrder/'+uId;
+                var url = urls.BASE+'/api/getAllOrder/'+uId;
                 console.log('uri to hit '+ url)
                 $http.get(url)
                     .then(
@@ -52,7 +52,7 @@ angular.module('crudApp').factory('UserService',
             function getUser(id) {
                 console.log('Fetching User with id :'+id);
                 var deferred = $q.defer();
-                $http.get('http://localhost:9999/api/user/' + id)
+                $http.get(urls.BASE+'/api/user/' + id)
                     .then(
                         function (response) {
                             console.log('Fetched successfully User with id :'+id);
@@ -70,7 +70,7 @@ angular.module('crudApp').factory('UserService',
             function createUser(user) {
                 console.log('Creating User');
                 var deferred = $q.defer();
-                $http.post('https://online-tracking-system.herokuapp.com/api/user', user)
+                $http.post(urls.BASE+'/api/user', user)
                     .then(
                         function (response) {
                             deferred.resolve(response.data);
@@ -88,7 +88,7 @@ angular.module('crudApp').factory('UserService',
             function login(user) {
                 console.log('Login User  ');
                 var deferred = $q.defer();
-                $http.put('http://localhost:9999/api/login', user)
+                $http.put(urls.BASE+'/api/login', user)
                     .then(
                         function (response) {
                             deferred.resolve(response.data);
@@ -105,7 +105,7 @@ angular.module('crudApp').factory('UserService',
                 $window.localStorage.clear();
                 console.log('Creating the order '+Order);
                 var deferred = $q.defer();
-                $http.post('http://localhost:9999/api/placeOrder',Order)
+                $http.post(urls.BASE+'/api/placeOrder',Order)
                     .then(
                         function (response) {
                            // loadAllUsers();
@@ -124,7 +124,7 @@ angular.module('crudApp').factory('UserService',
                 if(count<4){
                     console.log('Updating Order ');
                     var deferred = $q.defer();
-                    $http.patch('http://localhost:9999/api/upDateOrderStatus/'+orderId)
+                    $http.patch(urls.BASE+'/api/upDateOrderStatus/'+orderId)
                         .then(
                             function (response) {
                                 console.log('Order status updated ');
@@ -146,7 +146,7 @@ angular.module('crudApp').factory('UserService',
             function getOrder(id) {
                 console.log('Fetching Order with id :'+id);
                 var deferred = $q.defer();
-                $http.get('http://localhost:9999/api/placeOrder/' + id)
+                $http.get(urls.BASE+'/api/placeOrder/' + id)
                     .then(
                         function (response) {
                             console.log('Fetched successfully User with id :'+id);
@@ -170,7 +170,6 @@ angular.module('crudApp').factory('UserService',
 
             function clearAll(){
                 $window.localStorage.clear();
-                $localStorage.$reset();
             }
         }
     ]);

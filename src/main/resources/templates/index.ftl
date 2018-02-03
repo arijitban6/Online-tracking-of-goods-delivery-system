@@ -16,7 +16,7 @@
     <body>
     <header style="background-color:#2d52ff; color:white; padding: 15px 10px 15px 25px;font-family:serif">
         <div class="container">
-            <h2> <span  class="glyphicon glyphicon-leaf"></span> Online Tracking System</h2>
+            <h2> <span  class="glyphicon glyphicon-leaf"></span> Online Order Tracking System</h2>
         </div>
     </header>
         <div ui-view class="jumbotron" ></div>
@@ -29,7 +29,7 @@
         <script src="js/app/app.js"></script>
         <script src="js/app/UserService.js"></script>
         <script src="js/app/UserController.js"></script>
-        <div class="home-section">
+        <!--<div class="home-section">
             <ul class="menu-list">
                 <li><a href="#/singUpUser">Sing Up</a></li>
             </ul>
@@ -38,7 +38,7 @@
             <ul class="menu-list">
                 <li><a href="#/">Log Out</a></li>
             </ul>
-        </div>
+        </div>-->
     <footer>
         <small>Copyright 2018 |<a href="#"> About Us</a>|<a href="#"> Contact </a>|<a href="#"> Feedback</a></small>
     </footer>

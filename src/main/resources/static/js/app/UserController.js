@@ -83,7 +83,7 @@ angular.module('crudApp').controller('UserController',
                     },
                     function (errResponse) {
                         console.error('Error while creating User');
-                        self.errorMessage = 'Error while creating User: ' + errResponse.data.errorMessage;
+                        self.errorMessage = 'Error while creating User: '+ errResponse.data.errorMessage;
                         self.successMessage='';
                     }
                 );
@@ -107,7 +107,7 @@ angular.module('crudApp').controller('UserController',
                     },
                     function(errResponse){
                         console.error('Error while updating User');
-                        self.errorMessage='Error while updating User '+errResponse.data;
+                        self.errorMessage='Unable to Log-in / User not Found !!! Please try again';
                         self.successMessage='';
                     }
                 );

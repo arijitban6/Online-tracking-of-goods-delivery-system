@@ -6,6 +6,12 @@ jQuery(document).ready( function() {
 
 function checkContainer () {
     if($('#your-div').is(':visible')){ //if the container is visible on the page
+       /* var refresh = localStorage.getItem('refresh');
+        console.log(refresh);
+        if (refresh===null){
+            window.location.reload();
+            localStorage.setItem('refresh', "1");
+        }*/
         var status = $('#field-function_purpose').text();
         console.info("status in jS."+status.trim());
         var i=myFunction(status.trim());
@@ -27,7 +33,7 @@ function checkContainer () {
             }
             if(i==6){
                 clearInterval(refreshIntervalId);
-            }}, 1000);
+            }}, 2000);
 
     } else {
         setTimeout(checkContainer, 50); //wait 50 ms, then try again
@@ -37,11 +43,11 @@ function myFunction(status) {
     var j = 0;
     var i = 1;
     console.info("cool"+status)
-    if(status == "Shipped"){
+    if(status == "Order Status       : Shipped"){
         j=3;
-    } if(status == "OutForDelivery"){
+    } if(status == "Order Status       : OutForDelivery"){
         j=4;
-    } if(status == "Delivered"){
+    } if(status == "Order Status       : Delivered"){
         j=5;
     }
     console.log("j=="+j);

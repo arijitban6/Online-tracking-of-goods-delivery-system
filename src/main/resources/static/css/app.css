@@ -12,8 +12,16 @@ body, .form-control{
 	margin-right: 18px;
 }
 
+em{
+    color:red;
+}
+
 .has-error{
 	color:red;
+}
+
+.iconRight {
+    float:right;
 }
 
 .generic-container {
