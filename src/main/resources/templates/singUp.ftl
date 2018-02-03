@@ -41,6 +41,8 @@
 	                            <input type="email" ng-model="ctrl.user.email" id="email" class="form-control input-sm" placeholder="Enter your email-id. | e.g. abc@xyz" required/>
 	                        </div>
 	                    </div>
+	                </div>
+
 	                <div class="row">
 	                    <div class="form-actions" align="center">
 	                        <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
