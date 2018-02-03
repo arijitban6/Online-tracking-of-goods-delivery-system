@@ -4,6 +4,7 @@ import com.wase.online.order.tracking.model.Error;
 import com.wase.online.order.tracking.model.ErrorBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSendException;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,11 +29,14 @@ public class GenericExceptionHandler {
     public ResponseEntity<Error> invalidUserException(Exception ex){
         return new ResponseEntity<Error>(new Error(extractError(ex)),HttpStatus.UNAUTHORIZED);
     }
+    @ExceptionHandler(MailSendException.class)
+    public ResponseEntity<Error> unableToSendMail(Exception ex){
+        return new ResponseEntity<Error>(new Error(extractError(ex)),HttpStatus.ACCEPTED);
+    }
 
      private ErrorBuilder extractError(Exception ex){
          return new ErrorBuilder().setStatus(HttpStatus.INTERNAL_SERVER_ERROR)
                  .setMessage(ex.getMessage())
                  .setError("Internal Error").build();
      }
-
 }
