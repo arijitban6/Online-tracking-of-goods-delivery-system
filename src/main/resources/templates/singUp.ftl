@@ -12,7 +12,7 @@
 	                    <div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="uname">First Name <em>*</em></label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrl.user.firstName" id="firstName" class="First Name form-control input-sm" placeholder="Enter your first name"/>
+	                            <input type="text" ng-model="ctrl.user.firstName" id="firstName" class="First Name form-control input-sm" placeholder="Enter your first name"  ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -20,7 +20,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">Last Name <em>*</em></label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrl.user.lastName" id="lastName" class="Last Name form-control input-sm" placeholder="Enter your last name"/>
+	                            <input type="text" ng-model="ctrl.user.lastName" id="lastName" class="Last Name form-control input-sm" placeholder="Enter your last name"  ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -29,7 +29,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="age">Phone Number <em>*</em></label>
 	                        <div class="col-md-7">
-	                            <input type="number" ng-model="ctrl.user.phoneNumber" id="phoneNumber" class="form-control input-sm" placeholder="10-digit mobile number without prefix" required ng-pattern="ctrl.onlyIntegers" ng-minlength="10" ng-maxlength="10"/>
+	                            <input type="number" ng-model="ctrl.user.phoneNumber" id="phoneNumber" class="form-control input-sm" placeholder="10-digit mobile number without prefix" required ng-pattern="ctrl.onlyIntegers" ng-minlength="10" ng-maxlength="12"/>
 	                        </div>
 	                    </div>
 	                </div>
