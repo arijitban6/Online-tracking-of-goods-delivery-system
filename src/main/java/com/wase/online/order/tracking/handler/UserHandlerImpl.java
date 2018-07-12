@@ -36,6 +36,7 @@ public class UserHandlerImpl implements UserHandler {
            mail.sendEmail(userEntity.getEmail(),"Welcome","Hi "+userEntity.getFirstName()+"!! your password is: "+password);
             userEntity.setPassword(password);
         } catch (Exception e) {
+            e.printStackTrace();
             userEntity.setPassword("123123");
         }
         finally {

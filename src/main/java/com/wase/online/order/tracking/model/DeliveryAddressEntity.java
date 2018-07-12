@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by arijit on 1/26/2018.
@@ -22,6 +19,7 @@ public class DeliveryAddressEntity {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name = "delivery_address_entity_id")
     String DeliveryAddressEntityId;
     String Name;
     String PhoneNumber;

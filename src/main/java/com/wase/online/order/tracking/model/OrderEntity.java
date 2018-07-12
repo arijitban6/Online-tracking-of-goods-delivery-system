@@ -30,6 +30,7 @@ public class OrderEntity {
     private UserEntity user;
 
     private String orderDate;
+
     @Enumerated(EnumType.ORDINAL)
     private OrderStatus orderStatus;
 
